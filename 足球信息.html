@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>中超联赛</title>
+		<style>
+			.dg {
+				background-color: orange;
+			}
+			
+			.suc {
+				background-color: lawngreen;
+			}
+			.nowChecked {
+				color: red;
+			}
+			table thead tr td {
+				cursor: pointer;
+			}
+		</style>
+		<link rel="stylesheet" href="../css/bootstrap.css" />
+		<script type="text/javascript" src="../js/angular-1.3.14.js"></script>
+		<script type="text/javascript" src="js/football.js"></script>
+	</head>
+
+	<body ng-app="football">
+		<div class="container" ng-controller="contro">
+			<h1>中超联赛</h1>
+			<table class="table table-hover table-stripe">
+				<thead>
+					<tr>
+						<td>
+							<input ng-model="search.$" type="text" class="form-control" placeholder="请输入要搜索的关键字">
+						</td>
+						<td>
+							<input ng-model="search.Round" type="text" class="form-control" placeholder="请输入轮次">
+						</td>
+						<td>
+							<input ng-model="search.status_cn" type="text" class="form-control" placeholder="请输入状态">
+						</td>
+					</tr>
+					<tr>
+						<td>编号</td>
+						<td  class="dropup"  ng-click="ready('Round',$event)">轮次<span class="caret"></span></td>
+						<td  class="dropup"  ng-click="ready('MatchCity',$event)">城市<span class="caret"></span></td>
+						<td  class="dropup"  ng-click="ready('Situation',$event)">球场<span class="caret"></span></td>
+						<td  class="dropup"  ng-click="ready('Team1',$event)">主场<span class="caret"></span></td>
+						<td  class="dropup"  ng-click="ready('Team2',$event)">客场<span class="caret"></span></td>
+						<td  class="dropup"  ng-click="ready('date',$event)">日期<span class="caret"></span></td>
+						<td  class="dropup"  ng-click="ready('status_cn',$event)">状态<span class="caret"></span></td>
+					</tr>
+				</thead>
+				<tbody ng-init="order='Round' ">
+					<tr ng-repeat="b in footInfos | filter: search | orderBy: order" >	
+						<td>{{$index+1}}</td>
+						<td>{{b.Round}}</td>
+						<td>{{b.MatchCity}}</td>
+						<td>{{b.Situation}}</td>
+						<td>{{b.Team1}}</td>
+						<td>{{b.Team2}}</td>
+						<td>{{b.date}}</td>
+						<td>{{b.status_cn}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+	<head>
+		<meta charset="UTF-8">
+		<title>整合</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<script type="text/javascript" src="js/angular.js" ></script>
+		<script type="text/javascript" src="js/angular-route.js" ></script>
+		<script type="text/javascript" src="js/myindex.js" ></script>
+	</head>
+	<body ng-app="myapp">
+			 <nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+					<ul class="nav navbar-nav" ng-init="activeNum=1">
+						<li ng-class="{'active':activeNum==1}">
+							<a href="#/login" ng-click="activeNum=1">登录</a>
+						</li>
+						<li ng-class="{'active':activeNum==2}">
+							<a href="#/login" ng-click="activeNum=2">登录</a>
+						</li>
+						<li ng-class="{'active':activeNum==3}">
+							<a href="#/register" ng-click="activeNum=3">注册</a>
+						</li>
+						<li ng-class="{'active':activeNum==4}">
+							<a href="#/list" ng-click="activeNum=4">个人信息</a>
+						</li>
+						<li ng-class="{'active':activeNum==5}">
+							<a href="#/changePwd" ng-click="activeNum=5">修改</a>
+						</li>
+					</ul>
+				</div>
+		</nav>
+		<div ng-view style="margin-top: 100px;">
+			
+		</div>
+		</body>
+</html>
+
